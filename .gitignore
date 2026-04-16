@@ -1,0 +1,14 @@
+# 忽略大型 PDF / PPTX 原始文件（仅推送网站文件）
+*.pdf
+*.PDF
+*.pptx
+*.PPTX
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 图片资源（暂时占位，有图后解注释）
+# *.jpg
+# *.jpeg
+# *.png

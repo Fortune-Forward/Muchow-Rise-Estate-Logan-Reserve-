@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lot 58 · Crane · Muchow Rise Estate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{--dark:#2A1A0E;--dark2:#1C1008;--accent:#9B6B4A;--accent-light:#C8A882;--cream:#F2EDE3;--cream-dark:#E4DDD2;--ton:rgba(232,213,192,.72);--ton2:rgba(232,213,192,.42);}
+    html,body{width:100%;height:100%;overflow:hidden;background:#1C1008;display:flex;align-items:center;justify-content:center;font-family:'Jost','PingFang SC',sans-serif;}
+    #stage{width:1440px;height:810px;position:relative;overflow:hidden;transform-origin:center center;flex-shrink:0;}
+    .slide{position:absolute;inset:0;opacity:0;transform:translateX(52px);transition:opacity .65s cubic-bezier(.4,0,.2,1),transform .65s cubic-bezier(.4,0,.2,1);pointer-events:none;overflow:hidden;}
+    .slide.active{opacity:1;transform:translateX(0);pointer-events:all;}
+    .slide.exiting{opacity:0;transform:translateX(-52px);}
+    .progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--accent-light);transition:width .5s ease;z-index:999;}
+    .slide-counter{position:fixed;top:18px;right:26px;color:var(--ton2);font-size:11px;letter-spacing:3px;z-index:999;}
+    .nav-arrow{position:fixed;top:50%;transform:translateY(-50%);width:44px;height:44px;border:1px solid rgba(232,213,192,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:999;background:rgba(42,26,14,.3);backdrop-filter:blur(8px);color:var(--ton);font-size:16px;transition:all .25s;user-select:none;}
+    .nav-arrow:hover{background:rgba(155,107,74,.4);border-color:var(--accent);color:#fff;}
+    #prev{left:16px;}#next{right:16px;}
+    .nav-dots{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:999;}
+    .dot{width:7px;height:7px;border-radius:50%;background:rgba(232,213,192,.22);cursor:pointer;transition:all .3s;}
+    .dot.active{background:var(--accent-light);width:22px;border-radius:4px;}
+    .serif{font-family:'Cormorant Garamond',serif;}
+    .ff-logo{position:absolute;top:20px;right:28px;z-index:10;display:flex;align-items:center;gap:9px;}
+    .ff-icon{width:34px;height:34px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;}
+    .ff-text .top{font-size:9px;letter-spacing:3px;color:var(--ton2);text-transform:uppercase;}
+    .ff-text .bot{font-size:11px;letter-spacing:2px;color:var(--ton);text-transform:uppercase;}
+    .back-btn{position:fixed;top:16px;left:20px;z-index:999;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--ton2);text-decoration:none;display:flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid rgba(200,168,130,.15);border-radius:2px;transition:all .2s;}
+    .back-btn:hover{color:var(--accent-light);border-color:var(--accent);}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+    .slide.active .an{animation:fadeUp .65s cubic-bezier(.22,.61,.36,1) both;}
+    .slide.active .an-1{animation-delay:.05s;}.slide.active .an-2{animation-delay:.15s;}.slide.active .an-3{animation-delay:.28s;}.slide.active .an-4{animation-delay:.42s;}.slide.active .an-5{animation-delay:.56s;}.slide.active .an-6{animation-delay:.70s;}
+
+    /* ── SLIDE 1: LOT DETAILS ── */
+    #s1{background:var(--dark);}
+    /* Left panel */
+    .lot-left{position:absolute;left:0;top:0;bottom:0;width:340px;display:flex;flex-direction:column;justify-content:center;padding:56px 48px;border-right:1px solid rgba(200,168,130,.08);}
+    .lot-stage-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+    .lot-num{font-family:'Cormorant Garamond',serif;font-size:80px;color:var(--cream);font-weight:300;line-height:.9;margin-bottom:4px;}
+    .lot-street{font-size:13px;letter-spacing:2px;color:var(--ton2);margin-bottom:4px;}
+    .lot-suburb{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--ton2);}
+    .lot-design-name{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--accent-light);letter-spacing:4px;text-transform:uppercase;margin-top:14px;font-weight:300;}
+    /* Specs row */
+    .lot-specs-row{display:flex;gap:0;margin:20px 0 18px;border:1px solid rgba(200,168,130,.1);}
+    .lot-spec-cell{flex:1;display:flex;flex-direction:column;align-items:center;padding:12px 6px;border-right:1px solid rgba(200,168,130,.07);}
+    .lot-spec-cell:last-child{border-right:none;}
+    .spec-n{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--cream);font-weight:300;line-height:1;}
+    .spec-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ton2);margin-top:4px;}
+    /* Price table */
+    .price-table{margin-bottom:16px;}
+    .price-row{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid rgba(232,213,192,.06);}
+    .price-row:last-child{border-bottom:none;background:rgba(155,107,74,.1);margin-top:4px;}
+    .price-lbl{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--ton2);}
+    .price-row:last-child .price-lbl{color:var(--accent-light);font-weight:500;}
+    .price-val{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);font-weight:300;}
+    .price-row:last-child .price-val{font-size:28px;color:var(--accent-light);}
+    .lot-promise-bar{font-size:11px;letter-spacing:1.5px;color:var(--ton2);text-transform:uppercase;padding-top:12px;border-top:1px solid rgba(200,168,130,.06);display:flex;gap:10px;flex-wrap:wrap;}
+    .lot-promise-bar span{padding:3px 8px;border:1px solid rgba(200,168,130,.1);}
+
+    /* Right: images */
+    .lot-right{position:absolute;left:340px;right:0;top:0;bottom:0;display:flex;}
+    /* Photos column (exterior + interior stacked) */
+    .lot-photos{flex:1;display:flex;flex-direction:column;}
+    .lot-exterior{flex:1;position:relative;overflow:hidden;border-bottom:1px solid rgba(200,168,130,.06);}
+    .lot-interior{flex:1;position:relative;overflow:hidden;}
+    .lot-exterior img,.lot-interior img{width:100%;height:100%;object-fit:cover;display:block;}
+    .img-label{position:absolute;bottom:10px;right:12px;font-size:11px;letter-spacing:2px;color:rgba(232,213,192,.5);background:rgba(0,0,0,.55);padding:3px 9px;border-radius:2px;}
+    .img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;background:linear-gradient(160deg,#3A2010,#1A0A04);}
+    .img-placeholder .p-icon{font-size:32px;opacity:.25;}
+    .img-placeholder .p-txt{font-size:10px;letter-spacing:3px;color:var(--ton2);text-transform:uppercase;}
+    /* Floor plan column */
+    .lot-floorplan{flex:0 0 40%;border-left:1px solid rgba(200,168,130,.08);background:#1C0F07;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;position:relative;}
+    .lot-floorplan img{max-width:100%;max-height:90%;object-fit:contain;}
+    .floor-label{position:absolute;bottom:10px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ton2);}
+    .floor-placeholder{display:flex;flex-direction:column;align-items:center;gap:12px;opacity:.3;}
+    .floor-placeholder .f-icon{font-size:42px;}
+    .floor-placeholder .f-txt{font-size:10px;letter-spacing:3px;color:var(--accent-light);text-transform:uppercase;}
+
+    /* ── SLIDE 2: 5-STAR PROMISE ── */
+    #s2{background:var(--dark);}
+    #s2 .content{position:absolute;inset:0;display:flex;}
+    #s2 .promise-left{width:480px;display:flex;flex-direction:column;justify-content:center;padding:72px 64px;border-right:1px solid rgba(200,168,130,.08);}
+    #s2 .promise-title{font-family:'Cormorant Garamond',serif;font-size:52px;color:var(--cream);font-weight:300;line-height:1.1;margin-bottom:8px;}
+    #s2 .promise-sub{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent-light);margin-bottom:32px;}
+    .star-row{display:flex;gap:6px;margin-bottom:32px;}
+    .star{font-size:28px;color:var(--accent-light);}
+    .promise-list{display:flex;flex-direction:column;gap:16px;}
+    .p-item{display:flex;gap:16px;align-items:center;}
+    .p-check{width:24px;height:24px;border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .p-check span{font-size:11px;color:var(--accent);}
+    .p-text{font-size:14px;color:var(--ton);font-weight:300;letter-spacing:.5px;}
+    #s2 .promise-right{flex:1;display:flex;flex-direction:column;justify-content:center;padding:64px;}
+    #s2 .promise-body{font-size:14px;line-height:1.95;color:var(--ton2);font-weight:300;margin-bottom:32px;}
+    #s2 .promise-body p{margin-bottom:16px;}
+    .sig-row{display:flex;gap:56px;margin-top:8px;padding-top:28px;border-top:1px solid rgba(200,168,130,.1);}
+    .sig-block .sig-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);font-weight:300;font-style:italic;margin-bottom:6px;}
+    .sig-block .sig-role{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);}.sig-block .sig-title{font-size:12px;color:var(--ton2);}
+
+    /* ── SLIDE 3: INCLUSIONS ── */
+    #s3{background:var(--cream);}
+    #s3 .left{position:absolute;left:0;top:0;bottom:0;width:420px;background:var(--dark);display:flex;flex-direction:column;justify-content:center;padding:64px 56px;}
+    #s3 .left .lbl-sm{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent-light);margin-bottom:20px;}
+    #s3 .left h2{font-family:'Cormorant Garamond',serif;font-size:46px;color:var(--cream);font-weight:300;line-height:1.1;margin-bottom:20px;}
+    #s3 .left p{font-size:13px;line-height:1.9;color:var(--ton2);font-weight:300;}
+    #s3 .left .lot-ref{margin-top:28px;padding-top:20px;border-top:1px solid rgba(200,168,130,.1);}
+    #s3 .left .lot-ref .ref-num{font-family:'Cormorant Garamond',serif;font-size:38px;color:var(--accent-light);font-weight:300;}
+    #s3 .left .lot-ref .ref-addr{font-size:12px;letter-spacing:2px;color:var(--ton2);margin-top:2px;}
+    #s3 .left .price-final{font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--accent-light);margin-top:16px;font-weight:300;}
+    #s3 .left .price-final-lbl{font-size:10px;letter-spacing:3px;color:var(--ton2);text-transform:uppercase;}
+    #s3 .right{position:absolute;left:420px;right:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;padding:56px 64px;}
+    #s3 .right h3{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--dark);font-weight:300;letter-spacing:4px;text-transform:uppercase;margin-bottom:28px;}
+    .inclusions-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;}
+    .inc-item{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--cream-dark);}
+    .inc-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:7px;}
+    .inc-text{font-size:13px;color:#4A3828;font-weight:300;line-height:1.5;}
+    .disclaimer{margin-top:24px;font-size:10px;color:#9A8070;line-height:1.6;}
+  </style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="slide-counter" id="counter">01 / 03</div>
+<a class="back-btn" href="index.html">← 返回项目</a>
+<div class="nav-arrow" id="prev">&#8592;</div>
+<div class="nav-arrow" id="next">&#8594;</div>
+<div class="nav-dots" id="dots"></div>
+
+<div id="stage">
+
+<!-- ── S1: LOT DETAILS ── -->
+<div class="slide active" id="s1">
+  <div class="lot-left">
+    <div class="lot-stage-tag an an-1">House &amp; Land Package</div>
+    <div class="lot-num serif an an-2">46</div>
+    <div class="lot-street an an-3">Helena Street</div>
+    <div class="lot-suburb an an-3">Logan Reserve · QLD</div>
+    <div class="lot-design-name an an-3">Crane</div>
+    <div class="lot-specs-row an an-4">
+      <div class="lot-spec-cell"><div class="spec-n serif">4</div><div class="spec-lbl">卧室</div></div>
+      <div class="lot-spec-cell"><div class="spec-n serif">2</div><div class="spec-lbl">浴室</div></div>
+      <div class="lot-spec-cell"><div class="spec-n serif">2</div><div class="spec-lbl">车位</div></div>
+      <div class="lot-spec-cell"><div class="spec-n serif">7★</div><div class="spec-lbl">能耗</div></div>
+    </div>
+    <div class="price-table an an-4">
+      <div class="price-row"><span class="price-lbl">地块面积</span><span class="price-val serif">358 m²</span></div>
+      <div class="price-row"><span class="price-lbl">地块价格</span><span class="price-val serif">$478,976</span></div>
+      <div class="price-row"><span class="price-lbl">建筑面积</span><span class="price-val serif">173.28 m²</span></div>
+      <div class="price-row"><span class="price-lbl">建筑价格</span><span class="price-val serif">$440,924</span></div>
+      <div class="price-row"><span class="price-lbl">套餐总价</span><span class="price-val serif">$919,900</span></div>
+    </div>
+    <div class="lot-promise-bar an an-5">
+      <span>固定价格</span><span>28天开工</span><span>25周竣工</span><span>7星能耗</span>
+    </div>
+  </div>
+  <div class="lot-right">
+    <div class="lot-photos">
+      <div class="lot-exterior">
+        <!-- <img src="lot58_exterior.jpg" alt="Lot 58 外观"> -->
+        <div class="img-placeholder"><div class="p-icon">🏠</div><div class="p-txt">房屋外观效果图</div><div style="font-size:9px;color:rgba(232,213,192,.2);letter-spacing:2px;margin-top:4px;">请添加 lot58_exterior.jpg</div></div>
+        <div class="img-label">房屋外观</div>
+      </div>
+      <div class="lot-interior">
+        <!-- <img src="lot58_interior.jpg" alt="Lot 58 室内"> -->
+        <div class="img-placeholder"><div class="p-icon">🛋</div><div class="p-txt">室内效果图</div><div style="font-size:9px;color:rgba(232,213,192,.2);letter-spacing:2px;margin-top:4px;">请添加 lot58_interior.jpg</div></div>
+        <div class="img-label">室内效果图</div>
+      </div>
+    </div>
+    <div class="lot-floorplan">
+      <!-- <img src="lot58_floorplan.jpg" alt="户型图"> -->
+      <div class="floor-placeholder"><div class="f-icon">📐</div><div class="f-txt">户型图</div><div style="font-size:9px;color:rgba(232,213,192,.2);letter-spacing:2px;margin-top:4px;">请添加 lot58_floorplan.jpg</div></div>
+      <div class="floor-label">Floor Plan · Crane</div>
+    </div>
+  </div>
+  <div class="ff-logo"><div class="ff-icon">FF</div><div class="ff-text"><div class="top">Fortune</div><div class="bot">Forward</div></div></div>
+</div>
+
+<!-- ── S2: 5-STAR PROMISE ── -->
+<div class="slide" id="s2">
+  <div class="content">
+    <div class="promise-left">
+      <div class="promise-title serif an an-1">5 Star<br>Promise</div>
+      <div class="promise-sub an an-1">Homecorp 五星服务承诺</div>
+      <div class="star-row an an-2"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="promise-list an an-3">
+        <div class="p-item"><div class="p-check"><span>✓</span></div><div class="p-text">Fixed Price Guarantee · 固定价格保证</div></div>
+        <div class="p-item"><div class="p-check"><span>✓</span></div><div class="p-text">28 Day Start Guarantee · 28天开工保证</div></div>
+        <div class="p-item"><div class="p-check"><span>✓</span></div><div class="p-text">Quality Build Guarantee · 品质建造保证</div></div>
+        <div class="p-item"><div class="p-check"><span>✓</span></div><div class="p-text">7 Star Energy Rating · 7星能耗评级</div></div>
+        <div class="p-item"><div class="p-check"><span>✓</span></div><div class="p-text">Dedicated Customer Service · 专属客服服务</div></div>
+      </div>
+    </div>
+    <div class="promise-right">
+      <div class="promise-body an an-2">
+        <p>Homecorp 深知建造新家是人生中最重要的情感与财务决策之一。正因如此，我们不仅提供固定价格合同，更承诺一整套全方位保障方案，让您在整个置业过程中充满信心、无后顾之忧。</p>
+        <p>从 28 天开工保证到品质建造承诺，专属客服代表将全程陪伴您，确保您的投资顺畅、高效、无压力。</p>
+        <p>有了 Homecorp 五星服务承诺，您可以安心踏上建家之旅，知道自己置于可靠、专业的团队手中。</p>
+      </div>
+      <div class="sig-row an an-4">
+        <div class="sig-block">
+          <div class="sig-name">Marc Fritzsche</div>
+          <div class="sig-title">Marc Fritzsche</div>
+          <div class="sig-role">Executive Director</div>
+        </div>
+        <div class="sig-block">
+          <div class="sig-name">Dan Hillier</div>
+          <div class="sig-title">Dan Hillier</div>
+          <div class="sig-role">National Sales Manager</div>
+        </div>
+      </div>
+      <div class="an an-5" style="margin-top:24px;font-size:10px;color:var(--ton2);letter-spacing:1.5px;line-height:1.7;padding-top:16px;border-top:1px solid rgba(200,168,130,.1);">
+        *Terms &amp; Conditions Apply. Package price is subject to availability and subject to change without notice. Furniture shown is for illustrative purposes only. Homecorp Constructions ABN 27 169 928 205 | QBCC 1280580
+      </div>
+    </div>
+  </div>
+  <div class="ff-logo"><div class="ff-icon">FF</div><div class="ff-text"><div class="top">Fortune</div><div class="bot">Forward</div></div></div>
+</div>
+
+<!-- ── S3: FULL INCLUSIONS ── -->
+<div class="slide" id="s3">
+  <div class="left">
+    <div class="lbl-sm an an-1">全配包含项目</div>
+    <h2 class="serif an an-2">Full Turn<br>Key<br>Inclusions</h2>
+    <p class="an an-3">所有项目均已包含在套餐总价中，无需额外支付，真正实现拎包入住。</p>
+    <div class="lot-ref an an-4">
+      <div class="ref-num serif">Lot 58</div>
+      <div class="ref-addr">Helena Street · Logan Reserve</div>
+      <div class="ref-addr" style="margin-top:4px;">Crane · 400m²</div>
+      <div class="price-final-lbl" style="margin-top:16px;">套餐总价</div>
+      <div class="price-final serif">$919,900</div>
+    </div>
+  </div>
+  <div class="right">
+    <h3 class="serif an an-1">包含项目 · Inclusions</h3>
+    <div class="inclusions-grid an an-2">
+      <div class="inc-item"><div class="inc-dot"></div><div class="inc-text">Colourbond 屋顶及防白蚁处理</div></div>
+      <div class="inc-item"><div class="inc-dot"></div><div class="inc-text">景观绿化（Landscaping）</div></div>
+      <div class="inc-item"><div class="inc-dot"></div><div class="inc-text">车道及门廊（Driveway &amp; Porch）</div></div>
+      <div class="inc-item"><div class="inc-dot"></div><div class="inc-text">围栏、晒衣架及信箱</div></div>
+      <div class="inc-item"><div class="inc-dot"></div><div class="inc-text">20mm 工程石台面（厨房、浴室及套间）</div></div>
+      <div class="inc-item"><div class="inc-dot"></div><div class="inc-text">空调及供暖系统（详见规格说明）</div></div>
+      <div class="inc-item"><div class="inc-dot"></div><div class="inc-text">不锈钢厨房电器</div></div>
+      <div class="inc-item"><div class="inc-dot"></div><div class="inc-text">全屋 LED 筒灯</div></div>
+      <div class="inc-item"><div class="inc-dot"></div><div class="inc-text">百叶窗及纱窗（所有可开启窗户）</div></div>
+      <div class="inc-item"><div class="inc-dot"></div><div class="inc-text">三道涂层油漆系统</div></div>
+    </div>
+    <div class="disclaimer an an-3">
+      *Package price is subject to availability &amp; subject to change without notice. Furniture shown is for illustrative purpose only and is not included in the purchase price. All illustrations and floor plans are artistic impressions only. Homecorp Constructions ABN 27 169 928 205 | QBCC 1280580
+    </div>
+  </div>
+  <div class="ff-logo"><div class="ff-icon">FF</div><div class="ff-text"><div class="top">Fortune</div><div class="bot">Forward</div></div></div>
+</div>
+
+</div>
+<script>
+  const slides=document.querySelectorAll('.slide'),dotsEl=document.getElementById('dots');
+  const total=slides.length;let cur=0,busy=false;
+  slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+  function goTo(n){if(busy||n===cur||n<0||n>=total)return;busy=true;slides[cur].classList.add('exiting');slides[cur].classList.remove('active');cur=n;slides[cur].classList.add('active');document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===cur));document.getElementById('counter').textContent=String(cur+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');document.getElementById('progress').style.width=((cur+1)/total*100)+'%';setTimeout(()=>{document.querySelectorAll('.slide.exiting').forEach(s=>s.classList.remove('exiting'));busy=false;},700);}
+  document.getElementById('next').onclick=()=>goTo(cur+1);document.getElementById('prev').onclick=()=>goTo(cur-1);
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')goTo(cur+1);if(e.key==='ArrowLeft'||e.key==='ArrowUp')goTo(cur-1);});
+  function scale(){const s=document.getElementById('stage');const r=Math.min(window.innerWidth/1440,window.innerHeight/810);s.style.transform=`scale(${r})`;}
+  window.addEventListener('resize',scale);scale();
+  document.getElementById('progress').style.width=(1/total*100)+'%';
+</script>
+</body>
+</html>
