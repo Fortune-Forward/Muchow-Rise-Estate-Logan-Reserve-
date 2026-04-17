@@ -73,39 +73,22 @@
     /* ════════════════════════════════
        S2: HOMECORP (开发商介绍 — FRONT)
     ════════════════════════════════ */
+    /* S2 — HOMECORP brand slide */
     #s2{background:var(--dark);}
-    #s2 .left{position:absolute;left:0;top:0;bottom:0;width:420px;display:flex;flex-direction:column;
-      justify-content:center;padding:60px 52px;border-right:1px solid rgba(200,168,130,.08);}
-    #s2 .lbl{color:var(--accent-light);margin-bottom:20px;}
-    #s2 .brand{font-family:'Cormorant Garamond',serif;font-size:58px;color:var(--cream);font-weight:300;line-height:1;margin-bottom:6px;}
-    #s2 .est{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--ton2);margin-bottom:22px;}
-    #s2 .quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--accent-light);line-height:1.7;margin-bottom:18px;padding-left:14px;border-left:2px solid var(--accent);}
-    #s2 .body-p{font-size:15px;line-height:1.85;color:var(--ton2);font-weight:300;margin-bottom:12px;}
-    #s2 .parent-tag{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px;}
-    #s2 .p-tag{font-size:11px;letter-spacing:2px;padding:4px 10px;border:1px solid rgba(200,168,130,.2);color:var(--ton2);text-transform:uppercase;}
-    #s2 .team{margin-top:18px;padding-top:16px;border-top:1px solid rgba(200,168,130,.1);}
-    #s2 .team-lbl{font-size:11px;letter-spacing:3px;color:var(--ton2);text-transform:uppercase;margin-bottom:13px;}
-    #s2 .team-row{display:flex;gap:16px;}
-    .team-person{flex:1;text-align:center;}
-    .team-avatar{width:112px;height:112px;border-radius:50%;border:1.5px solid rgba(155,107,74,.4);overflow:hidden;margin:0 auto 10px;background:rgba(155,107,74,.1);}
-    .team-avatar img{width:100%;height:100%;object-fit:cover;}
-    .team-name{font-size:13px;color:var(--cream);font-weight:400;line-height:1.3;}
-    .team-role{font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-top:3px;}
-
-    #s2 .right{position:absolute;left:420px;right:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;padding:52px 60px;}
-    .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:18px;}
-    .stat-box{background:rgba(255,255,255,.03);border:1px solid rgba(200,168,130,.08);padding:18px 20px;text-align:center;}
-    .stat-n{font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--accent-light);font-weight:300;line-height:1;}
-    .stat-l{font-size:11px;letter-spacing:2px;color:var(--ton2);text-transform:uppercase;margin-top:4px;}
-    .promise-box{border:1px solid rgba(155,107,74,.2);background:rgba(155,107,74,.04);padding:16px 22px;margin-bottom:14px;}
-    .promise-title{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--accent-light);margin-bottom:12px;font-weight:500;}
-    .promise-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;text-align:center;}
-    .promise-item .p-n{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);font-weight:300;line-height:1;}
-    .promise-item .p-l{font-size:11px;color:var(--ton2);line-height:1.4;margin-top:4px;}
-    .award-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-    .award-box{padding:12px 16px;background:rgba(232,213,192,.03);border:1px solid rgba(232,213,192,.07);}
-    .award-tag{font-size:11px;color:var(--accent);letter-spacing:2px;margin-bottom:4px;text-transform:uppercase;}
-    .award-text{font-size:15px;color:var(--cream);line-height:1.6;}
+    .hc-wrap{position:absolute;inset:0;display:flex;flex-direction:column;
+      justify-content:center;padding:0 120px;}
+    .hc-eyebrow{font-size:12px;letter-spacing:5px;text-transform:uppercase;
+      color:var(--ton2);margin-bottom:36px;}
+    .hc-brand{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:152px;
+      color:var(--cream);line-height:0.88;letter-spacing:-2px;margin-bottom:44px;}
+    .hc-owned{font-size:16px;color:var(--ton);font-weight:300;line-height:1.7;
+      margin-bottom:52px;max-width:520px;}
+    .hc-owned strong{color:var(--cream);font-weight:500;}
+    .hc-divider{width:48px;height:1px;background:rgba(200,168,130,.3);margin-bottom:36px;}
+    .hc-services{display:flex;flex-direction:column;gap:14px;}
+    .hc-svc-row{font-size:13px;letter-spacing:2.5px;text-transform:uppercase;
+      color:var(--ton2);font-weight:300;}
+    .hc-svc-row span{color:rgba(200,168,130,.35);margin:0 10px;}
 
     /* ════════════════════════════════
        S3: PROJECT INTRO
@@ -304,62 +287,21 @@
   <div class="tag">精品住宅社区 · 东南昆士兰</div>
 </div>
 
-<!-- ════ S2: HOMECORP (开发商介绍) ════ -->
+<!-- ════ S2: HOMECORP ════ -->
 <div class="slide" id="s2">
-  <div class="left">
-    <div class="lbl an an-1">关于开发商 · EST. 2004</div>
-    <div class="brand serif an an-2">Home<br>corp</div>
-    <div class="est an an-2">Prime Life Technologies · Toyota × Panasonic</div>
-    <div class="quote an an-3">"开发未来社区，让每个家庭都拥有归属感。"</div>
-    <p class="body-p an an-4">自 2004 年成立，Homecorp 从精品住宅建设发展为遍布澳大利亚的高层住宅开发商。隶属 Prime Life Technologies（丰田 × 松下合资），引入日式精工理念，已交付 3,100+ 套高品质住宅。</p>
-    <div class="parent-tag an an-4">
-      <div class="p-tag">Toyota</div>
-      <div class="p-tag">Panasonic</div>
-      <div class="p-tag">Misawa Homes</div>
+  <div class="hc-wrap">
+    <div class="hc-eyebrow an an-1">关于开发商 · Est. 2004</div>
+    <div class="hc-brand an an-2">Home<br>corp</div>
+    <div class="hc-owned an an-3">
+      Owned by Prime Life Technologies,<br>
+      A <strong>Toyota</strong> and <strong>Panasonic</strong> company
     </div>
-    <div class="team an an-5">
-      <div class="team-lbl">核心团队</div>
-      <div class="team-row">
-        <div class="team-person">
-          <div class="team-avatar"><img src="https://homecorp.com/wp-content/uploads/2023/12/Ron-Bakir-Crop-Head-Shot.jpg" alt="Ron" onerror="this.parentElement.style.background='rgba(155,107,74,.2)'"></div>
-          <div class="team-name">Ron Bakir</div><div class="team-role">CEO</div>
-        </div>
-        <div class="team-person">
-          <div class="team-avatar"><img src="https://homecorp.com/wp-content/uploads/2023/12/Marc-Crop-Headshot.jpg" alt="Marc" onerror="this.parentElement.style.background='rgba(155,107,74,.2)'"></div>
-          <div class="team-name">Marc Fritzsche</div><div class="team-role">执行总监</div>
-        </div>
-        <div class="team-person">
-          <div class="team-avatar"><img src="https://homecorp.com/wp-content/uploads/2023/12/David-McMahon-Crop-Headshot.jpg" alt="David" onerror="this.parentElement.style.background='rgba(155,107,74,.2)'"></div>
-          <div class="team-name">David McMahon</div><div class="team-role">COO</div>
-        </div>
-      </div>
+    <div class="hc-divider an an-3"></div>
+    <div class="hc-services an an-4">
+      <div class="hc-svc-row">Planning <span>|</span> Design <span>|</span> Approvals <span>|</span> Land Development</div>
+      <div class="hc-svc-row">House and Land <span>|</span> Residential Construction <span>|</span> Multi-Storey Construction</div>
     </div>
   </div>
-  <div class="right">
-    <div class="stats-grid an an-2">
-      <div class="stat-box"><div class="stat-n serif">165</div><div class="stat-l">名员工</div></div>
-      <div class="stat-box"><div class="stat-n serif">24</div><div class="stat-l">个社区</div></div>
-      <div class="stat-box"><div class="stat-n serif">20+</div><div class="stat-l">年经验</div></div>
-      <div class="stat-box"><div class="stat-n serif">5,200</div><div class="stat-l">已开发地块</div></div>
-      <div class="stat-box"><div class="stat-n serif">3,100</div><div class="stat-l">已建房屋</div></div>
-      <div class="stat-box"><div class="stat-n serif">$2.5B</div><div class="stat-l">项目总价值</div></div>
-    </div>
-    <div class="promise-box an an-3">
-      <div class="promise-title">★ Homecorp 五星服务承诺 · 5 Star Promise</div>
-      <div class="promise-grid">
-        <div class="promise-item"><div class="p-n serif">✓</div><div class="p-l">固定价格<br>保证</div></div>
-        <div class="promise-item"><div class="p-n serif">28</div><div class="p-l">天开工<br>保证</div></div>
-        <div class="promise-item"><div class="p-n serif">25</div><div class="p-l">周竣工<br>保证</div></div>
-        <div class="promise-item"><div class="p-n serif">7★</div><div class="p-l">能耗评级<br>保证</div></div>
-        <div class="promise-item"><div class="p-n serif">✓</div><div class="p-l">专属客服<br>服务</div></div>
-      </div>
-    </div>
-    <div class="award-grid an an-4">
-      <div class="award-box"><div class="award-tag">荣誉认可</div><div class="award-text">2019 昆士兰独立屋<br>前五大建筑商</div></div>
-      <div class="award-box"><div class="award-tag">日本智居技术</div><div class="award-text">与 Misawa Homes<br>战略合作 · 2018+</div></div>
-    </div>
-  </div>
-
 </div>
 
 <!-- ════ S3: PROJECT INTRO ════ -->
