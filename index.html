@@ -46,12 +46,118 @@
     .serif{font-family:'Cormorant Garamond',serif;}
     .lbl{font-size:11px;letter-spacing:4px;text-transform:uppercase;font-weight:400;}
 
-    /* Animations */
-    @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-    .slide.active .an{animation:fadeUp .68s cubic-bezier(.22,.61,.36,1) both;}
+    /* ═══════════════════════════════════════
+       ENHANCED ANIMATIONS
+    ═══════════════════════════════════════ */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes fadeLeft{from{opacity:0;transform:translateX(-28px);}to{opacity:1;transform:translateX(0);}}
+    @keyframes scaleIn{from{opacity:0;transform:scale(.88);}to{opacity:1;transform:scale(1);}}
+    @keyframes clipRevealX{from{clip-path:inset(0 100% 0 0);}to{clip-path:inset(0 0% 0 0);}}
+    .slide.active .an{animation:fadeUp .72s cubic-bezier(.22,.61,.36,1) both;}
     .slide.active .an-1{animation-delay:.06s;}.slide.active .an-2{animation-delay:.18s;}
     .slide.active .an-3{animation-delay:.30s;}.slide.active .an-4{animation-delay:.44s;}
     .slide.active .an-5{animation-delay:.56s;}.slide.active .an-6{animation-delay:.70s;}
+
+    /* ── S1: Title shimmer ── */
+    @keyframes titleShimmer{0%{background-position:-300% center}100%{background-position:300% center}}
+    #s1 h1{
+      background:linear-gradient(105deg,var(--cream) 36%,rgba(255,252,240,1) 46%,#fff 50%,rgba(255,252,240,1) 54%,var(--cream) 64%);
+      background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      animation:titleShimmer 4.5s linear infinite 2.2s;
+    }
+    /* ── S1: Logo pulse rings ── */
+    @keyframes pulseRing{0%{transform:scale(1);opacity:.55;}80%,100%{transform:scale(2.5);opacity:0;}}
+    .logo-ring{position:relative;}
+    .pulse-ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(200,168,130,.5);
+      animation:pulseRing 2.7s ease-out infinite;pointer-events:none;}
+    .pulse-ring:nth-child(2){animation-delay:.9s;}
+    .pulse-ring:nth-child(3){animation-delay:1.8s;}
+    /* ── S1: Hero image ambient breathe ── */
+    @keyframes heroBreathe{0%,100%{opacity:.18;transform:scale(1)}50%{opacity:.28;transform:scale(1.03)}}
+    #s1 .hero-img{animation:heroBreathe 9s ease-in-out infinite;transform-origin:center;}
+    /* ── S1: Divider draw ── */
+    @keyframes lineDraw{from{width:0;opacity:0}to{width:60px;opacity:.4}}
+    #s1 .divider{animation:lineDraw 1s ease-out .65s both;}
+
+    /* ── S3: Accent bar grow ── */
+    @keyframes barGrow{from{height:0;top:50%;}to{height:100%;top:0;}}
+    .slide.active #s3 .accent-bar{animation:barGrow .9s cubic-bezier(.22,.61,.36,1) .25s both;}
+
+    /* ── S4: Location dot pulse ── */
+    @keyframes dotPulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.6);opacity:.5;}}
+    .slide.active .loc-dot span{animation:dotPulse 2s ease-in-out infinite;}
+    .slide.active .loc-item:nth-child(1) .loc-dot span{animation-delay:0s;}
+    .slide.active .loc-item:nth-child(2) .loc-dot span{animation-delay:.3s;}
+    .slide.active .loc-item:nth-child(3) .loc-dot span{animation-delay:.6s;}
+    .slide.active .loc-item:nth-child(4) .loc-dot span{animation-delay:.9s;}
+    .slide.active .loc-item:nth-child(5) .loc-dot span{animation-delay:1.2s;}
+    .slide.active .loc-item:nth-child(6) .loc-dot span{animation-delay:1.5s;}
+
+    /* ── S5: SVG icon draw ── */
+    @keyframes iconDraw{from{stroke-dashoffset:500;}to{stroke-dashoffset:0;}}
+    .slide.active .hl-svg svg path,.slide.active .hl-svg svg polyline,
+    .slide.active .hl-svg svg line,.slide.active .hl-svg svg rect,
+    .slide.active .hl-svg svg circle,.slide.active .hl-svg svg polygon{
+      stroke-dasharray:500;stroke-dashoffset:500;
+      animation:iconDraw 1s ease forwards;
+    }
+    .slide.active .hl-cell:nth-child(1) .hl-svg svg *{animation-delay:.1s;}
+    .slide.active .hl-cell:nth-child(2) .hl-svg svg *{animation-delay:.22s;}
+    .slide.active .hl-cell:nth-child(3) .hl-svg svg *{animation-delay:.34s;}
+    .slide.active .hl-cell:nth-child(4) .hl-svg svg *{animation-delay:.46s;}
+    .slide.active .hl-cell:nth-child(5) .hl-svg svg *{animation-delay:.58s;}
+    .slide.active .hl-cell:nth-child(6) .hl-svg svg *{animation-delay:.70s;}
+    /* ── S5: Cell hover shimmer ── */
+    .hl-cell{position:relative;overflow:hidden;}
+    .hl-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(200,168,130,.07) 50%,transparent 100%);
+      transform:translateX(-100%);transition:transform .5s ease;}
+    .hl-cell:hover::after{transform:translateX(100%);}
+
+    /* ── S6: Masterplan scan line ── */
+    @keyframes scanLine{0%{top:-2px;opacity:0;}4%{opacity:.8;}92%{opacity:.6;}100%{top:100%;opacity:0;}}
+    .mp-scan{position:absolute;left:147px;width:1146px;height:1.5px;
+      background:linear-gradient(90deg,transparent 0%,var(--accent-light) 25%,rgba(255,255,255,.9) 50%,var(--accent-light) 75%,transparent 100%);
+      z-index:6;pointer-events:none;}
+    .slide.active .mp-scan{animation:scanLine 3.5s ease-in-out .4s both;}
+
+    /* ── Lot slides: Image clip reveal from bottom ── */
+    @keyframes imgRevealUp{from{clip-path:inset(100% 0 0 0);}to{clip-path:inset(0% 0 0 0);}}
+    .slide.active .ls-render-wrap{animation:imgRevealUp .9s cubic-bezier(.22,.61,.36,1) .12s both;}
+
+    /* ── Lot slides: Spec icons bounce in ── */
+    @keyframes specBounce{0%{opacity:0;transform:translateY(14px) scale(.82);}65%{transform:translateY(-3px) scale(1.06);}100%{opacity:1;transform:translateY(0) scale(1);}}
+    .slide.active .ls-spec{animation:specBounce .65s cubic-bezier(.22,.61,.36,1) both;}
+    .slide.active .ls-spec:nth-child(1){animation-delay:.48s;}
+    .slide.active .ls-spec:nth-child(2){animation-delay:.6s;}
+    .slide.active .ls-spec:nth-child(3){animation-delay:.72s;}
+    .slide.active .ls-spec:nth-child(4){animation-delay:.84s;}
+
+    /* ── Lot slides: Price tag reveal ── */
+    .slide.active .ls-price-tag{animation:clipRevealX .7s ease .55s both;}
+
+    /* ── S2: Team avatar halo ── */
+    @keyframes avatarHalo{0%,100%{box-shadow:0 0 0 0 rgba(155,107,74,0);}50%{box-shadow:0 0 20px 4px rgba(155,107,74,.22);}}
+    .slide.active .team-avatar{animation:avatarHalo 3.5s ease-in-out 1s infinite;}
+
+    /* ── S2: Stat box shimmer on hover ── */
+    .stat-box{position:relative;overflow:hidden;cursor:default;}
+    .stat-box::after{content:'';position:absolute;inset:0;
+      background:linear-gradient(90deg,transparent 0%,rgba(200,168,130,.1) 50%,transparent 100%);
+      transform:translateX(-100%);}
+    .stat-box:hover::after{transform:translateX(100%);transition:transform .6s ease;}
+
+    /* ── Progress bar shimmer ── */
+    @keyframes progressShimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+    .progress-bar{
+      background:linear-gradient(90deg,var(--accent) 0%,var(--accent-light) 38%,rgba(255,248,238,.9) 50%,var(--accent-light) 62%,var(--accent) 100%) !important;
+      background-size:200% auto !important;
+      animation:progressShimmer 2.2s linear infinite;
+    }
+
+    /* ── Cursor spotlight ── */
+    #cursor-glow{position:fixed;width:480px;height:480px;pointer-events:none;z-index:9998;
+      background:radial-gradient(circle,rgba(200,168,130,.045) 0%,transparent 65%);
+      transform:translate(-50%,-50%);border-radius:50%;will-change:left,top;}
 
     /* ════════════════════════════════
        S1: COVER
@@ -137,6 +243,14 @@
     .loc-text strong{color:var(--accent-light);font-weight:400;}
     #s4 .right{position:absolute;left:440px;right:0;top:0;bottom:0;background:#2A1A0E;display:flex;align-items:center;justify-content:center;padding:40px;}
     #s4 .map-inner{width:100%;height:100%;border:1px solid rgba(200,168,130,.12);border-radius:6px;overflow:hidden;position:relative;}
+    /* Map location pin */
+    @keyframes mapPinFloat{0%,100%{transform:translate(-50%,-100%) translateY(0)}50%{transform:translate(-50%,-100%) translateY(-5px)}}
+    .map-pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-100%);
+      display:flex;flex-direction:column;align-items:center;pointer-events:none;z-index:10;}
+    .map-pin svg{animation:mapPinFloat 3s ease-in-out infinite;filter:drop-shadow(0 4px 10px rgba(0,0,0,.7));}
+    .map-pin-label{background:rgba(42,26,14,.9);backdrop-filter:blur(8px);
+      color:#C8A882;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'Jost',sans-serif;
+      padding:5px 12px;margin-top:7px;border:1px solid rgba(200,168,130,.35);white-space:nowrap;border-radius:2px;}
     #s4 iframe{width:100%;height:100%;border:none;filter:sepia(25%) contrast(0.9);}
     #s4 .map-label{position:absolute;top:16px;left:16px;background:var(--dark);padding:8px 16px;border-radius:4px;font-size:11px;letter-spacing:3px;color:var(--accent-light);text-transform:uppercase;}
 
@@ -285,6 +399,9 @@
   <div class="bg"></div><div class="hero-img"></div><div class="overlay"></div>
   <div class="content">
     <div class="logo-ring an an-1">
+      <div class="pulse-ring"></div>
+      <div class="pulse-ring"></div>
+      <div class="pulse-ring"></div>
       <div class="logo-bird">
         <svg width="38" height="38" viewBox="0 0 48 48" fill="none" stroke="var(--accent-light)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity=".85">
           <path d="M8 36 C12 24 20 16 32 12 C26 20 24 28 26 36"/>
@@ -403,8 +520,17 @@
   </div>
   <div class="right">
     <div class="map-inner">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14158.4!2d153.0456!3d-27.7012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b914d2b2c5b7!2sLogan+Reserve+QLD!5e0!3m2!1sen!2sau!4v1" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2600!2d153.1148!3d-27.7175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sau!4v1" allowfullscreen="" loading="lazy"></iframe>
       <div class="map-label">Logan Reserve, QLD</div>
+      <!-- Project location pin overlay -->
+      <div class="map-pin">
+        <svg width="44" height="58" viewBox="0 0 44 58">
+          <path d="M22 0C9.85 0 0 9.85 0 22c0 7.22 3.45 13.63 8.8 17.67L22 58l13.2-18.33C40.55 35.63 44 29.22 44 22 44 9.85 34.15 0 22 0z" fill="#C8A882" stroke="rgba(42,26,14,.5)" stroke-width="2"/>
+          <circle cx="22" cy="22" r="7" fill="rgba(42,26,14,.85)"/>
+          <circle cx="22" cy="22" r="3.5" fill="#C8A882"/>
+        </svg>
+        <div class="map-pin-label">Muchow Rise Estate</div>
+      </div>
     </div>
   </div>
 
@@ -497,6 +623,8 @@
   <div class="mp-img-wrap">
     <img src="masterplan.jpg" alt="Master Plan">
   </div>
+  <!-- Scan line effect -->
+  <div class="mp-scan"></div>
 
   <!-- Pin overlay (sized to match the rendered image rect) -->
   <div class="mp-pins">
@@ -726,22 +854,123 @@
 
 </div><!-- /stage -->
 <script>
+  /* ── Core navigation ── */
   const slides=document.querySelectorAll('.slide'),dotsEl=document.getElementById('dots');
   const total=slides.length;let cur=0,busy=false;
   slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
-  function goTo(n){if(busy||n===cur||n<0||n>=total)return;busy=true;
-    slides[cur].classList.add('exiting');slides[cur].classList.remove('active');cur=n;
+
+  /* ── Counter animation ── */
+  function countUp(el,target,suffix,duration){
+    const raw=String(el.textContent).replace(/[^0-9.]/g,'');
+    if(!raw)return;
+    const start=performance.now();
+    const isFloat=target%1!==0;
+    (function step(now){
+      const t=Math.min((now-start)/duration,1);
+      const ease=1-Math.pow(1-t,3);
+      el.textContent=(isFloat?(ease*target).toFixed(1):Math.round(ease*target))+suffix;
+      if(t<1)requestAnimationFrame(step);
+    })(start);
+  }
+
+  /* ── Per-slide enter hooks ── */
+  const hooks={
+    1(){  /* S2 stats */
+      const data=[
+        [165,'',1300],[24,'',1100],[20,'+',1000],
+        [5200,'',1500],[3100,'',1400],[2.5,'B',1200]
+      ];
+      document.querySelectorAll('#s2 .stat-n').forEach((el,i)=>{
+        if(data[i])countUp(el,data[i][0],data[i][1],data[i][2]);
+      });
+    },
+    2(){  /* S3 stats */
+      const data=[[67,'',1000],[35,'分钟',900],[25,'周',800]];
+      document.querySelectorAll('#s3 .stat-val').forEach((el,i)=>{
+        if(data[i])countUp(el,data[i][0],data[i][1],data[i][2]);
+      });
+    }
+  };
+
+  /* ── Transition flash overlay ── */
+  const flash=document.createElement('div');
+  flash.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:996;opacity:0;background:radial-gradient(ellipse at center,rgba(155,107,74,.08) 0%,transparent 70%);transition:opacity .12s;';
+  document.body.appendChild(flash);
+
+  function goTo(n){
+    if(busy||n===cur||n<0||n>=total)return;busy=true;
+    /* Flash */
+    flash.style.opacity='1';
+    setTimeout(()=>flash.style.opacity='0',200);
+    slides[cur].classList.add('exiting');slides[cur].classList.remove('active');
+    cur=n;
     slides[cur].classList.add('active');
     document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===cur));
     document.getElementById('counter').textContent=String(cur+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');
     document.getElementById('progress').style.width=((cur+1)/total*100)+'%';
-    setTimeout(()=>{document.querySelectorAll('.slide.exiting').forEach(s=>s.classList.remove('exiting'));busy=false;},700);}
+    /* Run hooks */
+    if(hooks[cur])setTimeout(hooks[cur],350);
+    setTimeout(()=>{document.querySelectorAll('.slide.exiting').forEach(s=>s.classList.remove('exiting'));busy=false;},700);
+  }
+
   document.getElementById('next').onclick=()=>goTo(cur+1);
   document.getElementById('prev').onclick=()=>goTo(cur-1);
-  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')goTo(cur+1);if(e.key==='ArrowLeft'||e.key==='ArrowUp')goTo(cur-1);});
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='ArrowDown')goTo(cur+1);
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp')goTo(cur-1);
+  });
+
+  /* ── Responsive scale ── */
   function scale(){const s=document.getElementById('stage');const r=Math.min(window.innerWidth/1440,window.innerHeight/810);s.style.transform=`scale(${r})`;}
   window.addEventListener('resize',scale);scale();
   document.getElementById('progress').style.width=(1/total*100)+'%';
+
+  /* ── Particle canvas on S1 ── */
+  (function(){
+    const canvas=document.createElement('canvas');
+    canvas.width=1440;canvas.height=810;
+    canvas.style.cssText='position:absolute;inset:0;pointer-events:none;z-index:3;';
+    const s1=document.getElementById('s1');
+    s1.insertBefore(canvas,s1.querySelector('.content'));
+    const ctx=canvas.getContext('2d');
+    const pts=Array.from({length:65},()=>({
+      x:Math.random()*1440,y:Math.random()*810,
+      r:Math.random()*1.4+.3,
+      vx:(Math.random()-.5)*.12,
+      vy:-(Math.random()*.28+.06),
+      a:Math.random()*.3+.04
+    }));
+    function draw(){
+      ctx.clearRect(0,0,1440,810);
+      pts.forEach(p=>{
+        p.x+=p.vx;p.y+=p.vy;
+        if(p.y<-4){p.y=814;p.x=Math.random()*1440;}
+        if(p.x<-4)p.x=1444;else if(p.x>1444)p.x=-4;
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(200,168,130,${p.a})`;ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  /* ── Cursor spotlight ── */
+  (function(){
+    const glow=document.createElement('div');
+    glow.id='cursor-glow';
+    document.body.appendChild(glow);
+    let mx=window.innerWidth/2,my=window.innerHeight/2;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+    (function lerp(){
+      const cx=parseFloat(glow.style.left||mx),cy=parseFloat(glow.style.top||my);
+      glow.style.left=(cx+(mx-cx)*.1)+'px';
+      glow.style.top=(cy+(my-cy)*.1)+'px';
+      requestAnimationFrame(lerp);
+    })();
+  })();
+
+  /* ── Run S1 initial hook (first slide) ── */
+  /* S1 already active on load, no counter needed */
 </script>
 </body>
 </html>
