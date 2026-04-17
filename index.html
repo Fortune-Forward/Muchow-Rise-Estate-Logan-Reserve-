@@ -74,24 +74,24 @@
        S2: HOMECORP (开发商介绍 — FRONT)
     ════════════════════════════════ */
     #s2{background:var(--dark);}
-    #s2 .left{position:absolute;left:0;top:0;bottom:0;width:420px;display:flex;flex-direction:column;
-      justify-content:center;padding:60px 52px;border-right:1px solid rgba(200,168,130,.08);}
-    #s2 .lbl{color:var(--accent-light);margin-bottom:28px;}
-    #s2 .brand{font-family:'Cormorant Garamond',serif;font-size:92px;color:var(--cream);font-weight:300;line-height:0.9;margin-bottom:24px;}
-    #s2 .owned{font-size:13px;color:var(--ton);font-weight:300;line-height:1.8;margin-bottom:28px;}
+    #s2 .left{position:absolute;left:0;top:0;bottom:0;width:440px;display:flex;flex-direction:column;
+      justify-content:center;padding:52px 52px;border-right:1px solid rgba(200,168,130,.08);}
+    #s2 .lbl{color:var(--accent-light);margin-bottom:18px;}
+    #s2 .brand{font-family:'Cormorant Garamond',serif;font-size:78px;color:var(--cream);font-weight:300;line-height:0.9;margin-bottom:18px;}
+    #s2 .owned{font-size:12px;color:var(--ton);font-weight:300;line-height:1.75;margin-bottom:16px;}
     #s2 .owned strong{color:var(--cream);font-weight:500;}
-    #s2 .svc-lines{display:flex;flex-direction:column;gap:10px;padding-top:20px;border-top:1px solid rgba(200,168,130,.1);}
-    #s2 .svc-row{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ton2);line-height:1.6;}
-    #s2 .team{margin-top:18px;padding-top:16px;border-top:1px solid rgba(200,168,130,.1);}
-    #s2 .team-lbl{font-size:11px;letter-spacing:3px;color:var(--ton2);text-transform:uppercase;margin-bottom:13px;}
-    #s2 .team-row{display:flex;gap:16px;}
+    #s2 .svc-lines{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid rgba(200,168,130,.1);margin-bottom:20px;}
+    #s2 .svc-row{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ton2);line-height:1.5;}
+    #s2 .team{padding-top:16px;border-top:1px solid rgba(200,168,130,.1);}
+    #s2 .team-lbl{font-size:10px;letter-spacing:3px;color:var(--ton2);text-transform:uppercase;margin-bottom:14px;}
+    #s2 .team-row{display:flex;gap:12px;}
     .team-person{flex:1;text-align:center;}
-    .team-avatar{width:112px;height:112px;border-radius:50%;border:1.5px solid rgba(155,107,74,.4);overflow:hidden;margin:0 auto 10px;background:rgba(155,107,74,.1);}
+    .team-avatar{width:72px;height:72px;border-radius:50%;border:1.5px solid rgba(155,107,74,.4);overflow:hidden;margin:0 auto 8px;background:rgba(155,107,74,.1);}
     .team-avatar img{width:100%;height:100%;object-fit:cover;}
-    .team-name{font-size:13px;color:var(--cream);font-weight:400;line-height:1.3;}
-    .team-role{font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-top:3px;}
+    .team-name{font-size:11px;color:var(--cream);font-weight:400;line-height:1.3;}
+    .team-role{font-size:10px;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-top:2px;}
 
-    #s2 .right{position:absolute;left:420px;right:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;padding:52px 60px;}
+    #s2 .right{position:absolute;left:440px;right:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;padding:52px 60px;}
     .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:18px;}
     .stat-box{background:rgba(255,255,255,.03);border:1px solid rgba(200,168,130,.08);padding:18px 20px;text-align:center;}
     .stat-n{font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--accent-light);font-weight:300;line-height:1;}
@@ -314,7 +314,27 @@
     </div>
     <div class="svc-lines an an-4">
       <div class="svc-row">Planning · Design · Approvals · Land Development</div>
-      <div class="svc-row">House and Land · Residential · Multi-Storey</div>
+      <div class="svc-row">House and Land · Residential · Multi-Storey Construction</div>
+    </div>
+    <div class="team an an-5">
+      <div class="team-lbl">核心团队</div>
+      <div class="team-row">
+        <div class="team-person">
+          <div class="team-avatar"><img src="https://homecorp.com/wp-content/uploads/2023/12/Ron-Bakir-Crop-Head-Shot.jpg" alt="Ron" onerror="this.parentElement.style.background='rgba(155,107,74,.2)'"></div>
+          <div class="team-name">Ron Bakir</div>
+          <div class="team-role">CEO</div>
+        </div>
+        <div class="team-person">
+          <div class="team-avatar"><img src="https://homecorp.com/wp-content/uploads/2023/12/Marc-Crop-Headshot.jpg" alt="Marc" onerror="this.parentElement.style.background='rgba(155,107,74,.2)'"></div>
+          <div class="team-name">Marc Fritzsche</div>
+          <div class="team-role">执行总监</div>
+        </div>
+        <div class="team-person">
+          <div class="team-avatar"><img src="https://homecorp.com/wp-content/uploads/2023/12/David-McMahon-Crop-Headshot.jpg" alt="David" onerror="this.parentElement.style.background='rgba(155,107,74,.2)'"></div>
+          <div class="team-name">David McMahon</div>
+          <div class="team-role">COO</div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="right">
