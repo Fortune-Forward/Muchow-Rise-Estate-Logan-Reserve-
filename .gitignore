@@ -1,9 +1,3 @@
-# 忽略大型 PDF / PPTX 原始文件（仅推送网站文件）
-*.pdf
-*.PDF
-*.pptx
-*.PPTX
-
 # 系统文件
 .DS_Store
 Thumbs.db
