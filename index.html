@@ -223,7 +223,136 @@
     }
 
     /* ═══════════════════════════════
-       SECTION 03 — PAST PROJECTS
+       SECTION 03 — PAST PROJECTS (PORTFOLIO)
+    ═══════════════════════════════ */
+    /* Big stats hero */
+    .portfolio-stats {
+      display:grid; grid-template-columns:1fr 1fr 1fr;
+      gap:0;
+      margin-top:24px;
+      border-top:1px solid rgba(232,213,192,.10);
+      border-left:1px solid rgba(232,213,192,.10);
+    }
+    .portfolio-stat {
+      padding:18px 8px;
+      border-right:1px solid rgba(232,213,192,.10);
+      border-bottom:1px solid rgba(232,213,192,.10);
+      text-align:center;
+    }
+    .portfolio-stat-v {
+      font-family:'Cormorant Garamond',serif; font-size:30px;
+      color:var(--accent-light); font-weight:300; line-height:1;
+    }
+    .portfolio-stat-l {
+      font-size:9px; letter-spacing:1.5px; text-transform:uppercase;
+      color:var(--ton2); margin-top:6px;
+    }
+    /* Category heading */
+    .cat-head {
+      margin-top:32px; padding:0 4px;
+      display:flex; align-items:baseline; gap:12px;
+    }
+    .cat-icon {
+      flex-shrink:0;
+      font-size:18px;
+    }
+    .cat-name {
+      font-family:'Cormorant Garamond',serif;
+      font-size:22px; font-weight:400;
+      color:var(--cream); line-height:1.2;
+    }
+    .cat-name em {
+      display:block;
+      font-style:italic; font-size:11px;
+      color:var(--accent-light); margin-top:3px;
+      letter-spacing:2px; text-transform:uppercase;
+    }
+    /* Project card */
+    .proj-card {
+      margin-top:14px;
+      background:rgba(232,213,192,.04);
+      border:1px solid rgba(232,213,192,.10);
+      overflow:hidden;
+    }
+    .proj-img {
+      width:100%; height:200px;
+      background-size:cover; background-position:center;
+      position:relative;
+    }
+    .proj-img::after {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(180deg, transparent 0%, rgba(42,26,14,.55) 100%);
+    }
+    .proj-tag {
+      position:absolute; top:12px; left:12px;
+      background:var(--dark); color:var(--accent-light);
+      padding:4px 10px;
+      font-size:8.5px; letter-spacing:2px; text-transform:uppercase;
+      border:1px solid var(--accent-light);
+      z-index:1;
+    }
+    .proj-tag.done { background:rgba(155,107,74,.85); color:var(--cream); border-color:transparent; }
+    .proj-tag.lm { background:var(--accent-light); color:var(--dark); border-color:transparent; font-weight:500; }
+    .proj-title-overlay {
+      position:absolute; bottom:0; left:0; right:0;
+      padding:14px 16px;
+      z-index:1;
+    }
+    .proj-title {
+      font-family:'Cormorant Garamond',serif;
+      font-size:22px; color:var(--cream); font-weight:300;
+      line-height:1.15; letter-spacing:.5px;
+    }
+    .proj-loc {
+      font-size:10px; letter-spacing:2px; text-transform:uppercase;
+      color:var(--accent-light); margin-top:4px;
+    }
+    .proj-meta {
+      padding:14px 16px;
+      display:grid; grid-template-columns:1fr 1fr 1fr;
+      gap:8px;
+      border-top:1px solid rgba(232,213,192,.06);
+    }
+    .proj-meta-cell {
+      text-align:center;
+    }
+    .proj-meta-v {
+      font-family:'Cormorant Garamond',serif; font-size:18px;
+      color:var(--cream); font-weight:300; line-height:1;
+    }
+    .proj-meta-v em { font-style:normal; font-size:10px; color:var(--accent-light); margin-left:1px; }
+    .proj-meta-l {
+      font-size:8.5px; letter-spacing:1.2px; text-transform:uppercase;
+      color:var(--ton2); margin-top:4px;
+    }
+    /* Featured project (The Verge) — same-area as Muchow */
+    .featured-card {
+      margin-top:24px;
+      background:rgba(155,107,74,.10);
+      border:1px solid rgba(200,168,130,.30);
+      overflow:hidden;
+      position:relative;
+    }
+    .featured-badge {
+      position:absolute; top:12px; right:12px;
+      background:var(--accent-light); color:var(--dark);
+      padding:5px 11px;
+      font-size:9px; letter-spacing:2px; text-transform:uppercase;
+      font-weight:600; z-index:2;
+    }
+    .featured-body {
+      padding:18px;
+    }
+    .featured-context {
+      font-size:11px; line-height:1.7; color:var(--ton);
+      margin-top:8px;
+    }
+    .featured-context strong {
+      color:var(--accent-light); font-weight:500;
+    }
+
+    /* ═══════════════════════════════
+       SECTION 04 — PROJECT INTRO (legacy state-card styles - unused but kept)
     ═══════════════════════════════ */
     .past-section { background:var(--dark); }
     .past-intro {
@@ -807,188 +936,195 @@
   <section class="past-section" data-idx="3">
     <div class="pad" style="padding-bottom:8px;">
       <span class="lbl reveal d1">过往项目 · TRACK RECORD</span>
-      <h2 class="h1 reveal d2">全国布局<br><em>15 个精品社区</em></h2>
+      <h2 class="h1 reveal d2">从一栋别墅<br><em>到 30+ 全国项目</em></h2>
       <div class="rule reveal d3"></div>
-      <p class="body reveal d3">Homecorp 在昆士兰 · 维多利亚 · 南澳三州持续布局，5,200+ 已开发地块，3,100+ 已建房屋 —— Muchow Rise 是这份扎实履历中的最新一员。</p>
-      <div class="past-headline reveal d4">
-        <div class="past-headline-n">15</div>
-        <div class="past-headline-txt">个全国布局<br>House &amp; Land 精品社区</div>
+      <p class="body reveal d3">Homecorp 自 2004 年成立以来，业务覆盖独栋别墅、联排别墅、大型规划社区，到高层豪华公寓 —— Muchow Rise Estate 是这份扎实履历中的最新一员。</p>
+      <div class="portfolio-stats reveal d4">
+        <div class="portfolio-stat"><div class="portfolio-stat-v">30+</div><div class="portfolio-stat-l">全国项目</div></div>
+        <div class="portfolio-stat"><div class="portfolio-stat-v">3,100+</div><div class="portfolio-stat-l">已建房屋</div></div>
+        <div class="portfolio-stat"><div class="portfolio-stat-v">$2.5B</div><div class="portfolio-stat-l">项目总值</div></div>
       </div>
     </div>
 
-    <!-- ── 昆士兰 SEQ ── -->
-    <div class="pad" style="padding-top:24px; padding-bottom:0;">
-      <div class="state-card reveal d3">
-        <div class="state-card-img" style="background-image:url('past_projects/seq_map.jpg')">
-          <div class="state-card-badge">QLD</div>
-          <div class="state-card-region">昆士兰州<em>South East Queensland</em></div>
+    <!-- ════════════════════════════════════
+         类别 1：高层豪华公寓
+    ════════════════════════════════════ -->
+    <div class="pad" style="padding-top:18px; padding-bottom:0;">
+      <div class="cat-head reveal d3">
+        <div class="cat-icon">🏙️</div>
+        <div class="cat-name">高层豪华公寓<em>Multi-Storey Towers</em></div>
+      </div>
+
+      <!-- Florence Residences -->
+      <div class="proj-card reveal d4">
+        <div class="proj-img" style="background-image:url('past_projects/florence.jpg')">
+          <div class="proj-tag lm">最新地标 · 2026</div>
+          <div class="proj-title-overlay">
+            <div class="proj-title">Florence Residences</div>
+            <div class="proj-loc">Surfers Paradise · Gold Coast</div>
+          </div>
         </div>
-        <div class="state-card-body">
-          <div class="state-project">
-            <div class="state-project-pin">1</div>
-            <div class="state-project-info">
-              <div class="state-project-name">Park Ridge Road Estate</div>
-              <div class="state-project-loc">Park Ridge</div>
-            </div>
-          </div>
-          <div class="state-project">
-            <div class="state-project-pin">2</div>
-            <div class="state-project-info">
-              <div class="state-project-name">Bumstead Road Estate</div>
-              <div class="state-project-loc">Park Ridge</div>
-            </div>
-          </div>
-          <div class="state-project">
-            <div class="state-project-pin">3</div>
-            <div class="state-project-info">
-              <div class="state-project-name">Escape to Ormeau</div>
-              <div class="state-project-loc">Ormeau</div>
-            </div>
-          </div>
-          <div class="state-project">
-            <div class="state-project-pin">4</div>
-            <div class="state-project-info">
-              <div class="state-project-name">Cavalier Grove</div>
-              <div class="state-project-loc">Fernvale</div>
-            </div>
-          </div>
-          <div class="state-project">
-            <div class="state-project-pin">5</div>
-            <div class="state-project-info">
-              <div class="state-project-name">Treetops Estate</div>
-              <div class="state-project-loc">Fernvale</div>
-            </div>
-          </div>
+        <div class="proj-meta">
+          <div class="proj-meta-cell"><div class="proj-meta-v">26<em>层</em></div><div class="proj-meta-l">楼层高度</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">120<em>套</em></div><div class="proj-meta-l">公寓总数</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">$210<em>M</em></div><div class="proj-meta-l">项目总值</div></div>
         </div>
       </div>
-    </div>
 
-    <!-- ── 维多利亚 VIC ── -->
-    <div class="pad" style="padding-top:0; padding-bottom:0;">
-      <div class="state-card reveal d4">
-        <div class="state-card-img" style="background-image:url('past_projects/vic_map.jpg')">
-          <div class="state-card-badge">VIC</div>
-          <div class="state-card-region">维多利亚州<em>Victoria</em></div>
+      <!-- Eve Residences -->
+      <div class="proj-card reveal d4">
+        <div class="proj-img" style="background-image:url('past_projects/eve.jpg')">
+          <div class="proj-tag done">已交付</div>
+          <div class="proj-title-overlay">
+            <div class="proj-title">Eve Residences</div>
+            <div class="proj-loc">Labrador · Broadwater 黄金海岸</div>
+          </div>
         </div>
-        <div class="state-card-body">
-          <div class="state-project">
-            <div class="state-project-pin">1</div>
-            <div class="state-project-info">
-              <div class="state-project-name">Aitken Grove Estate</div>
-              <div class="state-project-loc">Merrifield</div>
-            </div>
+        <div class="proj-meta">
+          <div class="proj-meta-cell"><div class="proj-meta-v">25<em>层</em></div><div class="proj-meta-l">楼层高度</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">$270<em>M</em></div><div class="proj-meta-l">项目总值</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">2023</div><div class="proj-meta-l">开工年份</div></div>
+        </div>
+      </div>
+
+      <!-- Cienna Varsity Ridge -->
+      <div class="proj-card reveal d4">
+        <div class="proj-img" style="background-image:url('past_projects/cienna.jpg')">
+          <div class="proj-tag">在建</div>
+          <div class="proj-title-overlay">
+            <div class="proj-title">Cienna Varsity Ridge</div>
+            <div class="proj-loc">Varsity Lakes · Gold Coast</div>
           </div>
-          <div class="state-project">
-            <div class="state-project-pin">2</div>
-            <div class="state-project-info">
-              <div class="state-project-name">Unity Park</div>
-              <div class="state-project-loc">Tarneit</div>
-            </div>
-          </div>
-          <div class="state-project">
-            <div class="state-project-pin">3</div>
-            <div class="state-project-info">
-              <div class="state-project-name">Riverside Village</div>
-              <div class="state-project-loc">Werribee</div>
-            </div>
-          </div>
-          <div class="state-project">
-            <div class="state-project-pin">4</div>
-            <div class="state-project-info">
-              <div class="state-project-name">Jubilee</div>
-              <div class="state-project-loc">Wyndham Vale</div>
-            </div>
-          </div>
-          <div class="state-project">
-            <div class="state-project-pin">5</div>
-            <div class="state-project-info">
-              <div class="state-project-name">Sunrise Plumpton Estate</div>
-              <div class="state-project-loc">Deanside</div>
-            </div>
-          </div>
+        </div>
+        <div class="proj-meta">
+          <div class="proj-meta-cell"><div class="proj-meta-v">高层</div><div class="proj-meta-l">公寓楼</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">湖畔</div><div class="proj-meta-l">主题</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">在建</div><div class="proj-meta-l">状态</div></div>
         </div>
       </div>
     </div>
 
-    <!-- ── 南澳 SA ── -->
-    <div class="pad" style="padding-top:0; padding-bottom:8px;">
-      <div class="state-card reveal d5">
-        <div class="state-card-img" style="background-image:url('past_projects/sa_map.jpg')">
-          <div class="state-card-badge">SA</div>
-          <div class="state-card-region">南澳州<em>South Australia</em></div>
+    <!-- ════════════════════════════════════
+         类别 2：联排别墅 & 公寓
+    ════════════════════════════════════ -->
+    <div class="pad" style="padding-top:18px; padding-bottom:0;">
+      <div class="cat-head reveal d4">
+        <div class="cat-icon">🏘️</div>
+        <div class="cat-name">联排别墅<em>Townhouses &amp; Terraces</em></div>
+      </div>
+
+      <!-- Aston Villas -->
+      <div class="proj-card reveal d5">
+        <div class="proj-img" style="background-image:url('past_projects/aston_villas.jpg')">
+          <div class="proj-tag">2025 在建</div>
+          <div class="proj-title-overlay">
+            <div class="proj-title">Aston Villas</div>
+            <div class="proj-loc">Park Ridge · 距 Muchow 仅 15 分钟</div>
+          </div>
         </div>
-        <div class="state-card-body">
-          <div class="state-project">
-            <div class="state-project-pin">1</div>
-            <div class="state-project-info">
-              <div class="state-project-name">Evanston Gardens Estate</div>
-              <div class="state-project-loc">Evanston Gardens</div>
-            </div>
+        <div class="proj-meta">
+          <div class="proj-meta-cell"><div class="proj-meta-v">31<em>套</em></div><div class="proj-meta-l">联排总数</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">35<em>min</em></div><div class="proj-meta-l">至布里斯班</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">高位</div><div class="proj-meta-l">设计风格</div></div>
+        </div>
+      </div>
+
+      <!-- Sicura Residences -->
+      <div class="proj-card reveal d5">
+        <div class="proj-img" style="background-image:url('past_projects/sicura.jpg')">
+          <div class="proj-tag done">已交付</div>
+          <div class="proj-title-overlay">
+            <div class="proj-title">Sicura Residences</div>
+            <div class="proj-loc">Gold Coast · 黄金海岸</div>
           </div>
-          <div class="state-project">
-            <div class="state-project-pin">2</div>
-            <div class="state-project-info">
-              <div class="state-project-name">Roberts Farm</div>
-              <div class="state-project-loc">Munno Para Downs</div>
-            </div>
-          </div>
-          <div class="state-project">
-            <div class="state-project-pin">3</div>
-            <div class="state-project-info">
-              <div class="state-project-name">Mandorla Estate</div>
-              <div class="state-project-loc">Munno Para Downs</div>
-            </div>
-          </div>
-          <div class="state-project">
-            <div class="state-project-pin">4</div>
-            <div class="state-project-info">
-              <div class="state-project-name">Springwood Estate</div>
-              <div class="state-project-loc">Gawler</div>
-            </div>
-          </div>
-          <div class="state-project">
-            <div class="state-project-pin">5</div>
-            <div class="state-project-info">
-              <div class="state-project-name">23 North</div>
-              <div class="state-project-loc">Angle Vale</div>
-            </div>
-          </div>
+        </div>
+        <div class="proj-meta">
+          <div class="proj-meta-cell"><div class="proj-meta-v">联排</div><div class="proj-meta-l">户型</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">现代</div><div class="proj-meta-l">设计</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">完工</div><div class="proj-meta-l">状态</div></div>
         </div>
       </div>
     </div>
 
-    <!-- ── Florence Residences 亮点 ── -->
-    <div class="pad" style="padding-top:0;">
-      <div class="florence-card reveal d6">
-        <div class="florence-tag">高端公寓亮点</div>
-        <div class="florence-img"></div>
-        <div class="florence-body">
-          <div style="font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--cream); font-weight:300; line-height:1.15;">Florence Residences</div>
-          <div style="font-size:10px; letter-spacing:2px; color:var(--accent-light); text-transform:uppercase; margin-top:5px;">Surfers Paradise QLD · 24 Monte Carlo Ave</div>
-          <div class="florence-stats" style="margin-top:14px;">
-            <div class="florence-stat">
-              <div class="florence-stat-v">116</div>
-              <div class="florence-stat-l">公寓总数</div>
-            </div>
-            <div class="florence-stat">
-              <div class="florence-stat-v">24</div>
-              <div class="florence-stat-l">楼层</div>
-            </div>
-            <div class="florence-stat">
-              <div class="florence-stat-v">2–4</div>
-              <div class="florence-stat-l">卧室</div>
-            </div>
+    <!-- ════════════════════════════════════
+         类别 3：大型规划社区 (Estates)
+    ════════════════════════════════════ -->
+    <div class="pad" style="padding-top:18px; padding-bottom:0;">
+      <div class="cat-head reveal d5">
+        <div class="cat-icon">🌳</div>
+        <div class="cat-name">大型规划社区<em>Master-Planned Estates</em></div>
+      </div>
+
+      <!-- One Tree Hill -->
+      <div class="proj-card reveal d6">
+        <div class="proj-img" style="background-image:url('past_projects/one_tree_hill.jpg')">
+          <div class="proj-tag done">已交付</div>
+          <div class="proj-title-overlay">
+            <div class="proj-title">One Tree Hill</div>
+            <div class="proj-loc">Gold Coast · 黄金海岸</div>
           </div>
-          <div class="florence-features">
-            <strong>建筑特色：</strong>落地玻璃幕墙 · 石材台面 · 智能家居 · 高端家电<br>
-            <strong>顶层会所：</strong>无边泳池 · 桑拿 · 健身房 · 冷热浸浴 · 屋顶酒吧<br>
-            <strong>社交空间：</strong>居民休息室 · 私人餐厅 · 户外娱乐区
+        </div>
+        <div class="proj-meta">
+          <div class="proj-meta-cell"><div class="proj-meta-v">House &amp; Land</div><div class="proj-meta-l">类型</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">精品</div><div class="proj-meta-l">定位</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">完工</div><div class="proj-meta-l">状态</div></div>
+        </div>
+      </div>
+
+      <!-- Horizon Court -->
+      <div class="proj-card reveal d6">
+        <div class="proj-img" style="background-image:url('past_projects/horizon_court.jpg')">
+          <div class="proj-tag done">已交付</div>
+          <div class="proj-title-overlay">
+            <div class="proj-title">Horizon Court</div>
+            <div class="proj-loc">Gold Coast · 黄金海岸</div>
           </div>
+        </div>
+        <div class="proj-meta">
+          <div class="proj-meta-cell"><div class="proj-meta-v">House &amp; Land</div><div class="proj-meta-l">类型</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">家庭</div><div class="proj-meta-l">定位</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">完工</div><div class="proj-meta-l">状态</div></div>
+        </div>
+      </div>
+
+      <!-- The Heights -->
+      <div class="proj-card reveal d6">
+        <div class="proj-img" style="background-image:url('past_projects/the_heights.jpg')">
+          <div class="proj-tag done">已交付</div>
+          <div class="proj-title-overlay">
+            <div class="proj-title">The Heights</div>
+            <div class="proj-loc">Pimpama · Gold Coast</div>
+          </div>
+        </div>
+        <div class="proj-meta">
+          <div class="proj-meta-cell"><div class="proj-meta-v">House &amp; Land</div><div class="proj-meta-l">类型</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">规划</div><div class="proj-meta-l">社区</div></div>
+          <div class="proj-meta-cell"><div class="proj-meta-v">完工</div><div class="proj-meta-l">状态</div></div>
         </div>
       </div>
     </div>
 
-    <p style="text-align:center; font-size:10px; color:var(--ton2); margin:18px 0 50px; letter-spacing:1.5px;" class="reveal d6">
+    <!-- ════════════════════════════════════
+         同区高亮：The Verge — Logan Reserve
+    ════════════════════════════════════ -->
+    <div class="pad" style="padding-top:24px; padding-bottom:8px;">
+      <div class="featured-card reveal d6">
+        <div class="featured-badge">同区已交付</div>
+        <div class="proj-img" style="background-image:url('past_projects/the_verge.jpg'); height:220px;">
+          <div class="proj-title-overlay">
+            <div class="proj-title">The Verge</div>
+            <div class="proj-loc">Logan Reserve · 与 Muchow Rise 同社区</div>
+          </div>
+        </div>
+        <div class="featured-body">
+          <p class="featured-context">
+            <strong>The Verge</strong> 是 Homecorp 在 Logan Reserve 同一社区的<strong>已完工 House &amp; Land 项目</strong>，业主已经入住成为活跃社区。这意味着 Muchow Rise 的施工水准、街道景观与社区氛围 —— 你都可以<strong>实地走访 The Verge</strong> 亲眼确认。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align:center; font-size:10px; color:var(--ton2); margin:24px 0 50px; letter-spacing:1.5px;" class="reveal d6">
       ↓ 接下来了解 Muchow Rise Estate
     </p>
   </section>
